@@ -37,7 +37,7 @@
 :root{
   --bg:#FBF3E6; --paper:#FFFAF2; --card:#FFFEFB; --kraft:#F1E0C4; --line:#E3CFAF;
   --ink:#3A2116; --muted:#6B4A37;
-  --tomato:#B8321F; --tomato-h:#9E2A19; --on-tomato:#FFFFFF; --mustard:#E9A81E; --on-mustard:#3A2116;
+  --tomato:#B8321F; --tomato-h:#9E2A19; --on-tomato:#FFFFFF; --on-tomato-2:#FFFAF2; --mustard:#E9A81E; --on-mustard:#3A2116;
   --field:#FFFFFF; --field-line:#CDB48F; --err:#A3200F; --err-bg:#FCE9E4;
   --shadow:0 18px 40px -22px rgba(58,33,22,.45);
   --f-display:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif;
@@ -46,14 +46,14 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#1B100B; --paper:#2B1A12; --card:#2B1A12; --kraft:#24160F; --line:#4A3124;
-    --ink:#FBF3E6; --muted:#CDB5A0; --tomato:#F27A5E; --tomato-h:#F58D75; --on-tomato:#1B100B;
+    --ink:#FBF3E6; --muted:#CDB5A0; --tomato:#F27A5E; --tomato-h:#F58D75; --on-tomato:#1B100B; --on-tomato-2:#1B100B;
     --field:#1B100B; --field-line:#6B4A37; --err:#FF9C86; --err-bg:#3B1B14;
     --shadow:0 18px 40px -22px rgba(0,0,0,.7); color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#1B100B; --paper:#2B1A12; --card:#2B1A12; --kraft:#24160F; --line:#4A3124;
-  --ink:#FBF3E6; --muted:#CDB5A0; --tomato:#F27A5E; --tomato-h:#F58D75; --on-tomato:#1B100B;
+  --ink:#FBF3E6; --muted:#CDB5A0; --tomato:#F27A5E; --tomato-h:#F58D75; --on-tomato:#1B100B; --on-tomato-2:#1B100B;
   --field:#1B100B; --field-line:#6B4A37; --err:#FF9C86; --err-bg:#3B1B14;
   --shadow:0 18px 40px -22px rgba(0,0,0,.7); color-scheme:dark;
 }
@@ -97,20 +97,45 @@ main.grid{display:grid;gap:18px;padding-block:10px 40px}
 .h2s{font-size:clamp(20px,4.6vw,26px);line-height:1.05;margin-bottom:14px}
 .kicker{display:flex;align-items:center;gap:10px;font:800 12.5px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .kicker::before{content:"";width:22px;height:4px;border-radius:2px;background:var(--mustard)}
-.ticks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.ticks li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
-.tick{width:28px;height:28px;border-radius:50%;background:var(--mustard);color:var(--on-mustard);display:grid;place-items:center;margin-top:1px}
-.tick svg{width:15px;height:15px}
-
+.stack{display:grid;gap:26px}
+.mini .h2s{margin-bottom:6px}
+.subsmall{font-size:15px;color:var(--muted);margin-bottom:14px}
+.mini.panel .h2s{margin-bottom:10px}
+.mini .body{font-size:17px;line-height:1.5}
+.quotes{display:grid;gap:10px}
+.quote{position:relative;margin:0;background:var(--paper);border:1px solid var(--kraft);border-radius:16px;padding:14px 16px 14px 52px}
+.quote::before{content:"\201C";position:absolute;left:14px;top:2px;font:800 56px/1 var(--f-display);color:var(--tomato)}
+.quote p{font-size:17px;line-height:1.4;font-weight:500}
+.hl{background:var(--tomato);color:var(--on-tomato-2);border-radius:20px;padding:20px 18px;box-shadow:var(--shadow)}
+.hl-k{font:800 12.5px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:10px}
+.hl-big{font:800 clamp(22px,6vw,28px)/1.1 var(--f-display);text-wrap:balance}
+.hl-sub{margin-top:12px;font-size:16.5px;line-height:1.4}
+.hl-note{margin-top:10px;font-size:14px;color:var(--muted)}
+.punch{margin-top:16px;padding-top:14px;border-top:2px solid var(--kraft);font:800 clamp(19px,5vw,24px)/1.12 var(--f-display);text-transform:uppercase;text-wrap:balance}
+.punch em{font-style:normal;color:var(--tomato)}
 .cases{display:grid;gap:14px}
 .case{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px}
 .case h3{font:700 17px/1.25 var(--f-body)}
 .case .meta{font-size:15px;color:var(--muted);margin-top:2px}
-.bars{display:grid;grid-template-columns:repeat(3,1fr);align-items:end;gap:10px;margin-top:14px;height:118px}
-.bar{display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;height:100%;gap:6px;min-width:0}
-.bar i{display:block;border-radius:8px 8px 4px 4px;background:var(--kraft);border:1px solid var(--line)}
-.bar:last-child i{background:var(--tomato);border-color:var(--tomato)}
-.bar span{font:800 15px/1.1 var(--f-body);text-align:center;white-space:nowrap}
+.chead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pct{flex:none;background:var(--tomato);color:var(--on-tomato);font:800 14.5px/1 var(--f-body);border-radius:999px;padding:6px 10px}
+.trend{display:block;width:100%;max-width:360px;height:auto;margin:6px auto 0;overflow:visible}
+.trend text{font-family:var(--f-body)}
+.trend .tv{font-size:13px;font-weight:800;fill:var(--ink)}
+.trend .tm{font-size:12px;font-weight:600;fill:var(--muted)}
+.trend .axis{stroke:var(--line);stroke-width:1.5}
+.trend .area{fill:var(--tomato);opacity:.1}
+.trend .line{fill:none;stroke:var(--tomato);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.trend .dot{fill:var(--card);stroke:var(--tomato);stroke-width:2.5}
+.trend .dot.end{fill:var(--tomato)}
+.results summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer}
+.results summary::-webkit-details-marker{display:none}
+.results summary .h2s{display:block;margin:0;font-family:var(--f-display);font-weight:800;text-transform:uppercase;letter-spacing:-.005em}
+.sumtxt{display:block}
+.results .cases{margin-top:16px}
+.chev{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);position:relative}
+.chev::before{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:translate(-50%,-70%) rotate(45deg);transition:transform .2s}
+.results[open] .chev::before{transform:translate(-50%,-30%) rotate(-135deg)}
 .note{font-size:14.5px;color:var(--muted);margin-top:12px}
 
 .formcard{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow)}
@@ -177,13 +202,11 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
   .hero{padding-top:6px}
   .hero .sub{margin-top:14px}
   main.grid{gap:22px}
-  .bars{height:128px}
   .quem .panel{grid-template-columns:160px 1fr;gap:28px;padding:28px}
   .quem img{width:160px}
 }
 @media (max-width:420px){
   .panel{padding:18px}
-  .bar span{font-size:14px}
 }
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
@@ -262,41 +285,63 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
   </section>
 
 
-  <section class="benefits panel" aria-labelledby="b">
-    <p class="kicker">Para o seu delivery</p>
-    <h2 class="h2s" id="b">O que muda no seu delivery</h2>
-    <ul class="ticks">
-      <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span>Mais pedidos chegando direto pelo seu cardápio, com o cliente na sua mão.</span></li>
-      <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span>Menos dependência de iFood e 99Food para vender todos os dias.</span></li>
-      <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span>Uma campanha pronta para aprovar, com o investimento definido para o seu delivery. Eu faço a gestão.</span></li>
-    </ul>
-  </section>
+  <div class="benefits stack">
+    <section class="mini" aria-labelledby="m1">
+      <h2 class="h2s" id="m1">Se isso soa familiar</h2>
+      <p class="subsmall">Perguntas que donos de delivery me fazem.</p>
+      <div class="quotes">
+        <blockquote class="quote"><p>Vendia muito no iFood e agora não consigo o mesmo resultado.</p></blockquote>
+        <blockquote class="quote"><p>Fiz tráfego pago, alcancei muita gente, mas o investimento não se pagou.</p></blockquote>
+        <blockquote class="quote"><p>Quero saber como trazer cliente novo e fazer o antigo voltar a pedir.</p></blockquote>
+      </div>
+    </section>
 
-  <section class="results panel" aria-labelledby="r">
-    <p class="kicker">Casos reais</p>
-    <h2 class="h2s" id="r">Resultados</h2>
+    <section class="mini panel" aria-labelledby="m2">
+      <h2 class="h2s" id="m2">Por que isso acontece</h2>
+      <p class="body">Cliente que compra pelo app é do app. Você paga para ele chegar e, quando ele volta, volta pelo mesmo caminho. Eu ajudo parte desses pedidos a virar pedido direto do seu cardápio próprio. O iFood continua.</p>
+    </section>
+
+    <section class="mini" aria-labelledby="m3">
+      <h2 class="h2s" id="m3">O depois, em número</h2>
+      <div class="hl">
+        <p class="hl-k">Exemplo</p>
+        <p class="hl-big">100 pedidos no iFood passam a ser 80 no iFood e 20 no seu cardápio.</p>
+        <p class="hl-sub">O volume é o mesmo. O cliente desses 20 passa a ser seu.</p>
+      </div>
+      <p class="hl-note">Os resultados reais estão logo abaixo.</p>
+    </section>
+
+    <section class="mini panel" aria-labelledby="m4">
+      <h2 class="h2s" id="m4">O que eu faço</h2>
+      <p class="body">Cardápio, anúncio, Google e clientes funcionando juntos, com uma pessoa só cuidando. Eu monto a campanha, você aprova.</p>
+      <p class="punch">Pedido o app te dá. Cliente só fica com quem tem o <em>contato</em>.</p>
+    </section>
+  </div>
+
+  <details class="results panel" id="resultados">
+    <summary>
+      <span class="sumtxt"><span class="kicker">Casos reais</span><span class="h2s" role="heading" aria-level="2">Resultados</span></span>
+      <span class="chev" aria-hidden="true"></span>
+    </summary>
     <div class="cases">
-      <article class="case" aria-label="Delivery Burger Gourmet: faturamento de R$ 26,5 mil para R$ 29,2 mil e depois R$ 33,6 mil">
-        <h3>Delivery Burger Gourmet</h3>
-        <p class="meta">Faturamento mensal</p>
-        <div class="bars" aria-hidden="true">
-          <div class="bar"><span>R$ 26,5 mil</span><i style="height:calc((100% - 28px) * 0.789)"></i></div>
-          <div class="bar"><span>R$ 29,2 mil</span><i style="height:calc((100% - 28px) * 0.869)"></i></div>
-          <div class="bar"><span>R$ 33,6 mil</span><i style="height:calc((100% - 28px) * 1.000)"></i></div>
-        </div>
+      <article class="case" aria-label="Delivery Burger Gourmet: faturamento mensal de R$ 26,5 mil no mês 1 para R$ 33,6 mil no mês 3, alta de 26,8%">
+        <div class="chead"><h3>Delivery Burger Gourmet</h3><span class="pct">+26,8%</span></div>
+        <p class="meta">Faturamento mensal, em 3 meses</p>
+        <svg class="trend" viewBox="0 0 260 120" aria-hidden="true" focusable="false"><line class="axis" x1="0" y1="96" x2="260" y2="96"/><polygon class="area" points="14.0,96 14.0,54.1 130.0,46.4 246.0,34.0 246.0,96"/><polyline class="line" points="14.0,54.1 130.0,46.4 246.0,34.0"/><circle class="dot" cx="14.0" cy="54.1" r="5.5"/><circle class="dot mid" cx="130.0" cy="46.4" r="3.5"/><circle class="dot end" cx="246.0" cy="34.0" r="5.5"/><text class="tv" x="8.0" y="42.1" text-anchor="start">R$ 26,5 mil</text><text class="tv" x="252.0" y="22.0" text-anchor="end">R$ 33,6 mil</text><text class="tm" x="8.0" y="114" text-anchor="start">Mês 1</text><text class="tm" x="252.0" y="114" text-anchor="end">Mês 3</text></svg>
       </article>
-      <article class="case" aria-label="Delivery Pizzaria: faturamento de R$ 48 mil para R$ 51,5 mil e depois R$ 55 mil, com o mesmo número de pedidos">
-        <h3>Delivery Pizzaria</h3>
-        <p class="meta">Faturamento mensal, com o mesmo número de pedidos</p>
-        <div class="bars" aria-hidden="true">
-          <div class="bar"><span>R$ 48 mil</span><i style="height:calc((100% - 28px) * 0.873)"></i></div>
-          <div class="bar"><span>R$ 51,5 mil</span><i style="height:calc((100% - 28px) * 0.936)"></i></div>
-          <div class="bar"><span>R$ 55 mil</span><i style="height:calc((100% - 28px) * 1.000)"></i></div>
-        </div>
+      <article class="case" aria-label="Delivery Pizzaria: faturamento mensal de R$ 48 mil no mês 1 para R$ 55 mil no mês 3, alta de 14,6%">
+        <div class="chead"><h3>Delivery Pizzaria</h3><span class="pct">+14,6%</span></div>
+        <p class="meta">Faturamento mensal, em 3 meses, com o mesmo número de pedidos</p>
+        <svg class="trend" viewBox="0 0 260 120" aria-hidden="true" focusable="false"><line class="axis" x1="0" y1="96" x2="260" y2="96"/><polygon class="area" points="14.0,96 14.0,47.4 130.0,40.7 246.0,34.0 246.0,96"/><polyline class="line" points="14.0,47.4 130.0,40.7 246.0,34.0"/><circle class="dot" cx="14.0" cy="47.4" r="5.5"/><circle class="dot mid" cx="130.0" cy="40.7" r="3.5"/><circle class="dot end" cx="246.0" cy="34.0" r="5.5"/><text class="tv" x="8.0" y="35.4" text-anchor="start">R$ 48 mil</text><text class="tv" x="252.0" y="22.0" text-anchor="end">R$ 55 mil</text><text class="tm" x="8.0" y="114" text-anchor="start">Mês 1</text><text class="tm" x="252.0" y="114" text-anchor="end">Mês 3</text></svg>
+      </article>
+      <article class="case" aria-label="Delivery Sushi: faturamento mensal de R$ 63 mil no mês 1 para R$ 85 mil no mês 4, alta de 34,9%">
+        <div class="chead"><h3>Delivery Sushi</h3><span class="pct">+34,9%</span></div>
+        <p class="meta">Faturamento mensal, do mês 1 ao mês 4</p>
+        <svg class="trend" viewBox="0 0 260 120" aria-hidden="true" focusable="false"><line class="axis" x1="0" y1="96" x2="260" y2="96"/><polygon class="area" points="14.0,96 14.0,57.3 246.0,34.0 246.0,96"/><polyline class="line" points="14.0,57.3 246.0,34.0"/><circle class="dot" cx="14.0" cy="57.3" r="5.5"/><circle class="dot end" cx="246.0" cy="34.0" r="5.5"/><text class="tv" x="8.0" y="45.3" text-anchor="start">R$ 63 mil</text><text class="tv" x="252.0" y="22.0" text-anchor="end">R$ 85 mil</text><text class="tm" x="8.0" y="114" text-anchor="start">Mês 1</text><text class="tm" x="252.0" y="114" text-anchor="end">Mês 4</text></svg>
       </article>
     </div>
-    <p class="note">Números de faturamento, não de lucro.</p>
-  </section>
+    <p class="note">Números de faturamento, não de lucro. Cada gráfico usa a própria escala, sem partir do zero.</p>
+  </details>
 
   <section class="quem" aria-labelledby="q">
     <div class="panel">
@@ -406,7 +451,7 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
 
   function post(payload){
     var url = CONFIG.WEBHOOK_URL;
-    if(!url){ if(window.console) console.warn('WEBHOOK_URL vazio: o lead não foi enviado a nenhum sistema.'); return Promise.resolve(true); }
+    if(!url){ if(window.console) console.warn('WEBHOOK_URL vazio: o lead não foi enviado a nenhum destino.'); return Promise.resolve(true); }
     var body = JSON.stringify(payload);
     return fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: body})
       .then(function(r){ return r.ok; })
