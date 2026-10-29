@@ -76,8 +76,21 @@ main.grid{display:grid;gap:18px;padding-block:10px 40px}
 .hero h1 em{font-style:normal;color:var(--tomato)}
 .hero .sub{margin-top:6px;color:var(--muted);font-size:clamp(13px,3.5vw,19px);line-height:1.33;max-width:52ch}
 
-.proof{background:var(--paper);border:1px solid var(--kraft);border-radius:12px;padding:8px 12px;font-size:13.5px;line-height:1.35;color:var(--muted);margin-bottom:8px}
+.proof{position:relative;overflow:hidden;background:var(--paper);border:1px solid var(--kraft);border-radius:12px;padding:8px 12px 10px;font-size:13.5px;line-height:1.35;color:var(--muted);margin-bottom:8px}
 .proof strong{color:var(--ink);font-weight:700}
+.slides{display:grid}
+.slide{grid-area:1/1;margin:0;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+.slide.on{opacity:1;transform:none;pointer-events:auto}
+.pbar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--tomato);transform:scaleX(0);transform-origin:left;opacity:.85}
+.pbar.run{animation:pbar 5s linear forwards}
+@keyframes pbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.proof:hover .pbar,.proof:focus-within .pbar{animation-play-state:paused}
+@media (prefers-reduced-motion: reduce){
+  .slides{display:block}
+  .slide{opacity:1;transform:none;transition:none;pointer-events:auto}
+  .slide + .slide{margin-top:6px}
+  .pbar{display:none}
+}
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
 .h2s{font-size:clamp(20px,4.6vw,26px);line-height:1.05;margin-bottom:14px}
 .kicker{display:flex;align-items:center;gap:10px;font:800 12.5px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
@@ -191,7 +204,13 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
   </section>
 
   <section class="formcol" id="formulario" aria-labelledby="f">
-    <p class="proof" id="proof">Delivery que foi de <strong>R$ 26,5 mil para R$ 33,6 mil em 3 meses</strong>. Faturamento, não lucro.</p>
+    <div class="proof" id="proof" role="group" aria-label="Resultados de clientes">
+      <div class="slides">
+        <p class="slide on">Delivery que foi de <strong>R$ 26,5 mil para R$ 33,6 mil em 3 meses</strong>. Faturamento, não lucro.</p>
+        <p class="slide" aria-hidden="true">Outro delivery foi de <strong>R$ 48 mil para R$ 55 mil em 3 meses</strong>. Faturamento, não lucro.</p>
+      </div>
+      <span class="pbar" aria-hidden="true"></span>
+    </div>
     <div class="formcard" id="form-card">
       <div id="form-view">
         <h2 id="f">Quero a análise do meu delivery</h2>
@@ -359,6 +378,23 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
     }).observe($('formulario'));
   }
   sticky.addEventListener('click', function(){ setTimeout(function(){ if(!thanksShown) $('nome').focus({preventScroll:true}); }, 450); });
+
+  /* linha de prova: troca de case a cada 5 segundos (pausa com o mouse em cima ou com a aba em segundo plano) */
+  (function(){
+    var box = $('proof'), slides = box.querySelectorAll('.slide'), pbar = box.querySelector('.pbar'), idx = 0;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce || slides.length < 2) return;
+    function show(i){
+      for(var k = 0; k < slides.length; k++){
+        slides[k].classList.toggle('on', k === i);
+        slides[k].setAttribute('aria-hidden', k === i ? 'false' : 'true');
+      }
+      pbar.classList.remove('run'); void pbar.offsetWidth; pbar.classList.add('run');
+    }
+    pbar.addEventListener('animationend', function(){ idx = (idx + 1) % slides.length; show(idx); });
+    document.addEventListener('visibilitychange', function(){ pbar.style.animationPlayState = document.hidden ? 'paused' : ''; });
+    show(0);
+  })();
 
   function uid(){ try{ return crypto.randomUUID(); }catch(_){ return 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2); } }
 
