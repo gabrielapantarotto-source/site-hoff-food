@@ -79,7 +79,9 @@ main.grid{display:grid;gap:18px;padding-block:10px 40px}
 .proof{position:relative;overflow:hidden;background:var(--paper);border:1px solid var(--kraft);border-radius:12px;padding:8px 12px 10px;font-size:13.5px;line-height:1.35;color:var(--muted);margin-bottom:8px}
 .proof strong{color:var(--ink);font-weight:700}
 .slides{display:grid}
-.slide{grid-area:1/1;margin:0;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+.fico{flex:none;width:30px;height:30px;border-radius:50%;background:var(--kraft);color:var(--tomato);display:grid;place-items:center}
+.fico svg{width:21px;height:21px}
+.slide{grid-area:1/1;margin:0;display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
 .slide.on{opacity:1;transform:none;pointer-events:auto}
 .pbar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--tomato);transform:scaleX(0);transform-origin:left;opacity:.85}
 .pbar.run{animation:pbar 5s linear forwards}
@@ -191,6 +193,9 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11C4 7.4 7.6 5 12 5s8 2.4 8 6z"/><path d="M9 8.4h.01M12.6 7.6h.01M15.6 9h.01" stroke-width="2.2"/><path d="M3 14h18"/><path d="M4.5 17h15v.7a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8z"/></symbol>
+  <symbol id="i-pizza" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6.8 12 21l8.5-14.2"/><path d="M3.5 6.8C8.6 3.9 15.4 3.9 20.5 6.8"/><circle cx="10.6" cy="9.6" r="1.2"/><circle cx="14.2" cy="11.6" r="1.2"/><circle cx="12" cy="15.4" r="1"/></symbol>
+  <symbol id="i-sushi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 14v3.4a2 2 0 0 0 2 2h9.6a2 2 0 0 0 2-2V14"/><path d="M2.6 12.6C3.8 9 7.4 7.6 12 7.6s8.2 1.4 9.4 5c-1 1.7-3.6 2.3-9.4 2.3s-8.4-.6-9.4-2.3z"/><path d="M9 9.6l-.7 4.2M13 8.2l-.3 6.4M17 9.4l.7 4" stroke-width="1.5"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
 </svg>
 
@@ -206,9 +211,9 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
   <section class="formcol" id="formulario" aria-labelledby="f">
     <div class="proof" id="proof" role="group" aria-label="Resultados de clientes">
       <div class="slides">
-        <p class="slide on">Delivery que foi de <strong>R$ 26,5 mil para R$ 33,6 mil em 3 meses</strong>. Faturamento, não lucro.</p>
-        <p class="slide" aria-hidden="true">Outro delivery foi de <strong>R$ 48 mil para R$ 55 mil em 3 meses</strong>. Faturamento, não lucro.</p>
-        <p class="slide" aria-hidden="true">Sushi: <strong>R$ 63 mil para R$ 85 mil em 4 meses</strong>, com o método. Faturamento, não lucro.</p>
+        <p class="slide on"><span class="fico" aria-hidden="true"><svg><use href="#i-burger"/></svg></span><span>Delivery que foi de <strong>R$ 26,5 mil para R$ 33,6 mil em 3 meses</strong>. Faturamento, não lucro.</span></p>
+        <p class="slide" aria-hidden="true"><span class="fico" aria-hidden="true"><svg><use href="#i-pizza"/></svg></span><span>Outro delivery foi de <strong>R$ 48 mil para R$ 55 mil em 3 meses</strong>. Faturamento, não lucro.</span></p>
+        <p class="slide" aria-hidden="true"><span class="fico" aria-hidden="true"><svg><use href="#i-sushi"/></svg></span><span>Sushi: <strong>R$ 63 mil para R$ 85 mil em 4 meses</strong>, com o método. Faturamento, não lucro.</span></p>
       </div>
       <span class="pbar" aria-hidden="true"></span>
     </div>
