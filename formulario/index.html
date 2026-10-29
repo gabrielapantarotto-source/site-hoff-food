@@ -362,7 +362,7 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
           <div class="field">
             <label for="whatsapp">Seu WhatsApp</label>
             <input type="tel" id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel-national" placeholder="(19) 99999-9999" required aria-describedby="e-whatsapp">
-            <p class="err" id="e-whatsapp" hidden>Escreva o WhatsApp com DDD.</p>
+            <p class="err" id="e-whatsapp" hidden>Use um celular com DDD, por exemplo (19) 98123-4567.</p>
           </div>
           <div class="field">
             <label for="instagram">@ do Instagram do seu delivery</label>
@@ -516,6 +516,17 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
   }
   tel.addEventListener('input', function(){ tel.value = maskTel(tel.value); });
   function telDigits(){ var d = tel.value.replace(/\D/g,''); if(d.length > 11 && d.indexOf('55') === 0) d = d.slice(2); return d; }
+  /* só aceita celular brasileiro de verdade: DDD existente, 9 na frente e número que não seja repetido ou sequência */
+  var DDDS = ',11,12,13,14,15,16,17,18,19,21,22,24,27,28,31,32,33,34,35,37,38,41,42,43,44,45,46,47,48,49,51,53,54,55,61,62,63,64,65,66,67,68,69,71,73,74,75,77,79,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,98,99,';
+  function telOk(d){
+    if(d.length !== 11) return false;
+    if(DDDS.indexOf(',' + d.slice(0,2) + ',') < 0) return false;
+    if(d.charAt(2) !== '9') return false;
+    var n = d.slice(3);
+    if(/^(\d)\1+$/.test(n)) return false;
+    if('0123456789'.indexOf(n) >= 0 || '9876543210'.indexOf(n) >= 0) return false;
+    return true;
+  }
 
   /* Instagram: aceita com ou sem @, e link do perfil */
   function handle(){
@@ -530,7 +541,7 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
   }
   var checks = {
     nome: function(){ var ok = $('nome').value.trim().length >= 2; setErr('nome', !ok, $('nome')); return ok; },
-    whatsapp: function(){ var d = telDigits(), ok = d.length === 10 || d.length === 11; setErr('whatsapp', !ok, tel); return ok; },
+    whatsapp: function(){ var d = telDigits(), ok = telOk(d); setErr('whatsapp', !ok, tel); return ok; },
     instagram: function(){ var ok = handle().length > 1; setErr('instagram', !ok, $('instagram')); return ok; },
     fat: function(){ var ok = !!fat(); setErr('fat', !ok, $('fs-fat')); return ok; }
   };
