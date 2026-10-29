@@ -228,7 +228,10 @@ fieldset[aria-invalid=true] .opt span{border-color:var(--err)}
 
 .thanks{text-align:left}
 .thanks h2{font-size:clamp(26px,6vw,34px);margin-bottom:12px}
-.thanks .btn-out{width:100%}
+.thanks .btn-out,.thanks .btn-main{width:100%}
+.thanks p.thanks-fast{margin:0 0 10px;color:var(--ink);font-weight:700}
+.thanks .thanks-site{margin-top:10px}
+.thanks .btn-main svg{width:22px;height:22px}
 .thanks h2:focus{outline:none}
 .thanks p{color:var(--muted);margin-bottom:18px}
 .thanks .check{width:52px;height:52px;border-radius:50%;background:var(--mustard);color:var(--on-mustard);display:grid;place-items:center;margin-bottom:14px}
@@ -318,6 +321,7 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
 <body>
 <a class="skip" href="#formulario">Ir para o formulário</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6L3 21z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .8c-1-.4-1.9-1.300-2.300-2.300l.8-1-1-2L9 8.500z" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
   <symbol id="i-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11C4 7.4 7.6 5 12 5s8 2.4 8 6z"/><path d="M9 8.4h.01M12.6 7.6h.01M15.6 9h.01" stroke-width="2.2"/><path d="M3 14h18"/><path d="M4.5 17h15v.7a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8z"/></symbol>
@@ -388,8 +392,10 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
       <div class="thanks" id="thanks" hidden>
         <div class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
         <h2 id="thanks-t" tabindex="-1">Recebi, obrigada!</h2>
-        <p>Vou olhar o seu perfil e te chamo no WhatsApp em até 30 minutos, em horário comercial. Se fizer sentido, te mando uma análise em vídeo do seu delivery. Enquanto isso, conheça a hoff.food.</p>
-        <a class="btn btn-out" href="https://www.estudiohoff.com.br/">Conheça a hoff.food</a>
+        <p>Vou olhar o seu perfil e te chamo no WhatsApp em até 30 minutos, em horário comercial. Se fizer sentido, te mando uma análise em vídeo do seu delivery.</p>
+        <p class="thanks-fast">Com pressa ou com alguma dúvida? Me chama agora:</p>
+        <a class="btn btn-main" id="thanks-wa" href="https://wa.me/5519988485348" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Chamar no WhatsApp agora</a>
+        <a class="btn btn-out thanks-site" href="https://www.estudiohoff.com.br/">Conheça a hoff.food</a>
       </div>
     </div>
   </section>
@@ -648,6 +654,13 @@ footer{padding-block:6px 30px;text-align:center;font-size:14px;color:var(--muted
       }catch(_){}
       $('form-view').hidden = true;
       $('proof').hidden = true;
+      try{
+        var wa = $('thanks-wa'), nm = $('nome').value.trim().split(/\s+/)[0];
+        wa.href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Oi, Gabriela! Sou ' + nm + ', acabei de preencher o formulário do meu delivery (' + handle() + ') e queria tirar uma dúvida.');
+        wa.addEventListener('click', function(){
+          try{ if(typeof window.fbq === 'function') window.fbq('track','Contact'); (window.dataLayer = window.dataLayer || []).push({event:'whatsapp_obrigado'}); }catch(_){}
+        });
+      }catch(_){}
       $('thanks').hidden = false;
       thanksShown = true; stickyUpdate();
       var t = $('thanks-t');
