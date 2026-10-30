@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>hoff.food | Canal próprio para delivery</title>
-<meta name="description" content="Campanha no raio de entrega, cardápio próprio e recompra semanal para donos de delivery que querem vender direto, sem depender só do iFood.">
+<meta name="description" content="Operação Escala de Pedidos: campanha no raio de entrega, cardápio próprio e recompra semanal para deliveries que querem vender direto, sem depender só do iFood.">
 <meta name="theme-color" content="#3A2116">
 <link rel="canonical" href="https://www.estudiohoff.com.br/">
 
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="hoff.food">
 <meta property="og:title" content="Todo pedido paga taxa. E o cliente nem é seu.">
-<meta property="og:description" content="Campanha no raio de entrega, cardápio próprio e recompra semanal para donos de delivery que querem vender direto, sem depender só do iFood.">
+<meta property="og:description" content="Operação Escala de Pedidos: campanha no raio de entrega, cardápio próprio e recompra semanal para deliveries que querem vender direto, sem depender só do iFood.">
 <meta property="og:url" content="https://www.estudiohoff.com.br/">
 <meta property="og:image" content="https://www.estudiohoff.com.br/og-image.png">
 <meta property="og:image:type" content="image/png">
@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="hoff.food: todo pedido paga taxa e o cliente nem é seu. Canal próprio para delivery.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Todo pedido paga taxa. E o cliente nem é seu.">
-<meta name="twitter:description" content="Campanha no raio de entrega, cardápio próprio e recompra semanal para donos de delivery que querem vender direto, sem depender só do iFood.">
+<meta name="twitter:description" content="Operação Escala de Pedidos: campanha no raio de entrega, cardápio próprio e recompra semanal para deliveries que querem vender direto, sem depender só do iFood.">
 <meta name="twitter:image" content="https://www.estudiohoff.com.br/og-image.png">
 
 <!-- Ícones da aba do navegador e da tela inicial -->
@@ -310,6 +310,19 @@ em.hl{font-style:normal;color:var(--tomato)}
 .change p{font-size:17px;color:var(--muted)}
 .changes-close{max-width:760px;margin:36px auto 0;text-align:center;font-size:clamp(18px,2vw,21px);text-wrap:balance}
 .changes-close strong{display:block;margin-top:10px}
+@media (min-width:821px){#escala .changes .change:last-child:nth-child(3n+1){grid-column:1/-1}#escala .changes .change:last-child:nth-child(3n+1) .ch-top{min-height:0}}
+@media (max-width:1100px){.steps .step:last-child:nth-child(odd){grid-column:1/-1}}
+.method-fine{max-width:760px;margin:24px auto 0;text-align:center}
+.bonus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:1040px;margin-inline:auto}
+.bonus{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:clamp(26px,3.5vw,40px);display:flex;flex-direction:column;gap:10px}
+.bonus-tag{font:700 13px/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--tomato)}
+.bonus h3{font-size:clamp(24px,2.6vw,30px);line-height:1.1;text-wrap:balance}
+.bonus-val{align-self:flex-start;padding:5px 12px;border-radius:999px;background:var(--tint);color:var(--tomato);font-weight:800;font-size:15px}
+.bonus p:last-child{color:var(--muted);font-size:17px}
+.bonus-fine{max-width:760px;margin:26px auto 0;text-align:center}
+.nb{white-space:nowrap}
+.results-explain{margin-top:26px;max-width:72ch;font-size:17px;line-height:1.55;color:var(--ink)}
+@media (max-width:820px){.bonus-grid{grid-template-columns:minmax(0,1fr)}}
 .facts{display:grid;gap:14px;align-content:center}
 .fact{padding:22px 24px;border-radius:20px;background:var(--bg);border:1.5px solid var(--line);display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 20px;align-items:center}
 .fact b{font:800 clamp(34px,4vw,44px)/1 var(--f-display);font-stretch:80%;color:var(--tomato);min-width:3.3ch}
@@ -327,7 +340,8 @@ em.hl{font-style:normal;color:var(--tomato)}
 .fine{margin-top:26px;max-width:72ch;font-size:15.5px;color:var(--muted)}
 
 /* Como funciona */
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+@media (min-width:1101px){.steps .step{padding:22px}.steps .step h3{font-size:21px}.steps .step p{font-size:15.5px}}
 .step{background:var(--on-choc-fill);border:1.5px solid var(--on-choc-line);border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:12px}
 .step .n{width:46px;height:46px;border-radius:14px;background:var(--accent-on-choc);color:#3A2116;display:grid;place-items:center;font:800 24px/1 var(--f-display);margin-bottom:10px}
 .step h3{font-size:25px}
@@ -799,7 +813,7 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
 
 /* Como funciona: trilha entre os passos (desenha uma vez, em sequência) */
 .step{position:relative;--np:49px;--lx:80px;--lw:44px}
-.step:nth-child(1){--i:0}.step:nth-child(2){--i:1}.step:nth-child(3){--i:2}.step:nth-child(4){--i:3}
+.step:nth-child(1){--i:0}.step:nth-child(2){--i:1}.step:nth-child(3){--i:2}.step:nth-child(4){--i:3}.step:nth-child(5){--i:4}
 .step:not(:last-child)::after{content:"";position:absolute;top:calc(var(--np) - 1px);left:var(--lx);width:calc(100% - var(--lw));height:2px;border-radius:2px;pointer-events:none;
   background:linear-gradient(var(--accent-on-choc),var(--accent-on-choc)) 0 0/100% 100% no-repeat,repeating-linear-gradient(90deg,var(--on-choc-line) 0 6px,transparent 6px 12px)}
 .steps.trail:not(.go) .step:not(:last-child)::after{background-size:0% 100%,auto}
@@ -881,17 +895,17 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
     <div class="hero-copy">
       <p class="eyebrow">Para delivery que depende do iFood</p>
       <h1>Todo pedido <mark>paga taxa.</mark><br>E o cliente <span style="white-space:nowrap">nem é seu.</span></h1>
-      <p class="lead">Eu ajudo donos de delivery que vendem pelo iFood a faturar mais pelo cardápio próprio, pelo método Escala de Pedidos.</p>
+      <p class="lead">Eu monto o seu canal próprio ao lado do iFood: cardápio otimizado, campanha no seu raio de entrega e recompra semanal. Você não sai do aplicativo e não precisa aprender ferramenta nova.</p>
       <div class="hero-actions">
         <a class="btn btn-cta" href="https://www.estudiohoff.com.br/formulario/?utm_source=site&amp;utm_medium=hero" data-form data-pos="hero">Quero a análise do meu delivery <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="link-quiet" href="#como-funciona">Ver como funciona</a>
       </div>
-      <p class="hero-micro">Leva 1 minuto. Eu olho o seu delivery e te chamo no WhatsApp.</p>
+      <p class="hero-micro">Leva cerca de 1 minuto. Depois eu chamo você no WhatsApp para marcar uma conversa.</p>
       <div class="hero-founder">
         <img src="data:image/jpeg;base64,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" width="64" height="64" alt="Gabriela Pantarotto">
         <p><strong>Gabriela Pantarotto</strong><span>10 anos de marketing de performance, foco em delivery. Fundadora da hoff.food.</span></p>
       </div>
-      <p class="hero-proof">Casos reais, sem vender um pedido a mais: <b>+R$ 7.000</b> de faturamento em um cliente, <b>quase 27%</b> em outro.</p>
+      <p class="hero-proof">Em 3 meses, dois deliveries que acompanho: <b>+26,8%</b> e <b>+14,6%</b> de faturamento. Não é média nem promessa.</p>
     </div>
     <figure class="calc" id="calculadora">
       <p class="calc-eyebrow">Calculadora</p>
@@ -983,38 +997,68 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
 <section class="band bg-kraft" id="escala">
   <div class="wrap">
     <div class="head center method-head">
-      <p class="eyebrow">Método Escala de Pedidos</p>
+      <p class="eyebrow">Operação Escala de Pedidos</p>
       <h2 class="h2-long">O método que devolve ao seu delivery o <em class="hl">controle</em> de quanto você vende pelo canal próprio.</h2>
-      <p class="lead muted">Seis frentes trabalhando juntas. O iFood continua rodando, e você deixa de depender só dele.</p>
+      <p class="lead muted">Sete frentes trabalhando juntas. O iFood continua rodando, e você deixa de depender só dele.</p>
     </div>
-    <div class="changes rail" data-label="As seis frentes do método">
+    <div class="changes rail" data-label="As sete frentes da operação">
       <article class="change">
-        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg></span><div><h3>Cardápio que vende sozinho</h3><p class="tag">Cardápio próprio e engenharia</p></div></div>
-        <p>Seu melhor vendedor trabalhando por você: pedido direto, com itens e preços pensados pra vender mais.</p>
+        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg></span><div><h3>Cardápio pensado para vender</h3></div></div>
+        <p>Montado para alta conversão e faturamento, com os itens campeões em destaque.</p>
       </article>
       <article class="change">
-        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-mega"/></svg></span><div><h3>Gente nova todo dia</h3><p class="tag">Campanha no raio de entrega</p></div></div>
-        <p>Anúncio que vira pedido, não só curtida. Gente nova chegando ao seu cardápio, só na região onde você entrega.</p>
+        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg></span><div><h3>Gestão do iFood</h3></div></div>
+        <p>O iFood continua rodando, com a gestão acompanhada junto do canal próprio.</p>
       </article>
       <article class="change">
-        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg></span><div><h3>Base que volta a comprar</h3><p class="tag">Recompra semanal</p></div></div>
-        <p>Quem já comprou volta a pedir, sem você pagar de novo pra conquistar o cliente. Toda semana, no dia que o delivery mais precisa de movimento.</p>
+        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-mega"/></svg></span><div><h3>Campanha no raio de entrega</h3></div></div>
+        <p>Anúncios só para quem está na sua área de entrega, levando direto para o seu cardápio. A verba é sua, paga direto à plataforma.</p>
       </article>
       <article class="change">
-        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><div><h3>Achado na hora da fome</h3><p class="tag">Google Meu Negócio</p></div></div>
-        <p>Seu negócio aparecendo no Google e no Maps quando alguém busca comida perto. Mais pedidos no delivery e mais gente no salão.</p>
+        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg></span><div><h3>Recompra semanal</h3></div></div>
+        <p>Campanhas para quem já pediu, para o cliente voltar sem depender de ranking.</p>
       </article>
       <article class="change">
-        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-insta"/></svg></span><div><h3>Marca que puxa venda</h3><p class="tag">Guia de postagem do mês</p></div></div>
-        <p>Você produz o conteúdo, e o hoff.food entrega o guia de postagem do mês e a direção. Ninguém conhece a sua cozinha como você.</p>
+        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><div><h3>Gestão dos clientes e dados</h3></div></div>
+        <p>Quem comprou, quando voltou e o que mais vende, em números que você entende.</p>
       </article>
       <article class="change">
-        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg></span><div><h3>iFood rendendo mais</h3><p class="tag">Gestão do iFood</p></div></div>
-        <p>O iFood continua rodando do lado, e o hoff.food também pode cuidar da gestão do app enquanto o seu canal próprio cresce.</p>
+        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><div><h3>Google Meu Negócio</h3></div></div>
+        <p>Seu delivery aparecendo no Google e no Maps.</p>
+      </article>
+      <article class="change">
+        <div class="ch-top"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg></span><div><h3>Acompanhamento</h3></div></div>
+        <p>Guia de postagem do mês, resumo toda semana no grupo de WhatsApp e encontros de estratégia: dois no primeiro mês e um por mês depois.</p>
       </article>
     </div>
-    <p class="changes-close">Você continua no iFood, mas passa a construir uma base de pedidos que é do seu delivery. <strong>O coração do método entra no ar em até 10 dias.</strong></p>
+    <p class="fine method-fine">O conteúdo do perfil, como fotos e vídeos, é produzido por você. Eu monto a estratégia e a campanha em cima do material que você fornece.</p>
+    <p class="changes-close">Você continua no iFood, mas passa a construir uma base de pedidos que é do seu delivery. <strong>No ar em até 10 dias, contados a partir do momento em que você me envia o que eu pedir.</strong></p>
     <div class="cta-row"><a class="btn btn-cta" id="escala-link" href="https://www.estudiohoff.com.br/formulario/?utm_source=site&amp;utm_medium=escala" data-form data-pos="escala">Quero a análise do meu delivery <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+
+<!-- 5. O QUE VEM JUNTO -->
+<section class="band" id="bonus">
+  <div class="wrap">
+    <div class="head center">
+      <p class="eyebrow">O que vem junto</p>
+      <h2>Além do acompanhamento, você leva dois bônus.</h2>
+    </div>
+    <div class="bonus-grid">
+      <article class="bonus">
+        <p class="bonus-tag">Bônus 1</p>
+        <h3>3 meses de Cardápio Web integrado ao iFood</h3>
+        <p class="bonus-val">Valor R$ 720</p>
+        <p>Pedido direto do cliente para o seu delivery, sem comissão de marketplace. Do dia 90 em diante a assinatura passa para a sua conta e continua sua.</p>
+      </article>
+      <article class="bonus">
+        <p class="bonus-tag">Bônus 2</p>
+        <h3>Captação de 3 vídeos profissionais por trimestre</h3>
+        <p class="bonus-val">Valor R$ 2.400 por trimestre</p>
+        <p>Eu vou até o seu delivery no primeiro mês de cada trimestre, em data combinada antes, capto e edito os vídeos. Disponível em Hortolândia, Campinas, Sumaré, Valinhos, Vinhedo e Paulínia.</p>
+      </article>
+    </div>
+    <p class="fine bonus-fine">Moro em Hortolândia e atendo o Brasil inteiro. A captação presencial vale para a região acima. O restante da operação é feito à distância.</p>
   </div>
 </section>
 
@@ -1023,21 +1067,22 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Resultados reais</p>
-      <h2>Resultados de clientes, sem vender um pedido a mais.</h2>
+      <h2>Dois deliveries, 3 meses de operação no ar.</h2>
     </div>
     <div class="results">
       <article class="result">
-        <p class="big-num" aria-label="Mais de 7 mil reais de faturamento">+R$ <span data-count="7000">7.000</span></p>
+        <p class="big-num" aria-label="Mais 26,8 por cento de faturamento">+26,8%</p>
         <p class="what">de faturamento</p>
-        <p>Um dono de delivery atendido pelo Método Escala de Pedidos ficou com R$ 7.000 a mais, sem vender um pedido a mais.</p>
+        <p><span class="nb">Mês 1: R$&nbsp;26,5&nbsp;mil</span> · <span class="nb">Mês 2: R$&nbsp;29,2&nbsp;mil</span> · <span class="nb">Mês 3: R$&nbsp;33,6&nbsp;mil</span></p>
       </article>
       <article class="result">
-        <p class="big-num" aria-label="27 por cento"><span data-count="27">27</span>%</p>
-        <p class="what">a mais de faturamento</p>
-        <p>Um segundo cliente, em outro delivery, ficou com quase 27% a mais de faturamento, sem vender um pedido a mais.</p>
+        <p class="big-num" aria-label="Mais 14,6 por cento de faturamento">+14,6%</p>
+        <p class="what">de faturamento</p>
+        <p><span class="nb">Mês 1: R$&nbsp;48&nbsp;mil</span> · <span class="nb">Mês 2: R$&nbsp;51,5&nbsp;mil</span> · <span class="nb">Mês 3: R$&nbsp;55&nbsp;mil</span></p>
       </article>
     </div>
-    <p class="fine">Dois clientes, não uma média nem uma promessa. O resultado de cada negócio depende do cardápio, da operação e da região.</p>
+    <p class="results-explain">O número de pedidos ficou igual nos dois casos. Parte dos pedidos saiu do iFood e passou para o cardápio próprio, como 100 pedidos que viram 80 no iFood e 20 no cardápio próprio. O faturamento subiu porque o ticket médio aumentou com a otimização do cardápio: adicionais, combos e outros ajustes. A verba média em anúncio foi de cerca de R$ 30 por dia.</p>
+    <p class="fine">São dois deliveries que eu acompanho. Não é uma média nem uma promessa. O resultado depende do cardápio, da operação e da região. É faturamento, não lucro.</p>
     <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-cta" href="https://www.estudiohoff.com.br/formulario/?utm_source=site&amp;utm_medium=resultados" data-form data-pos="resultados">Quero a análise do meu delivery <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
   </div>
 </section>
@@ -1050,12 +1095,13 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
       <h2>Da análise ao canal rodando.</h2>
     </div>
     <ol class="steps" style="margin:0;padding:0;list-style:none">
-      <li class="step"><span class="n">1</span><h3>Você preenche o formulário</h3><p>Nome, WhatsApp, Instagram do delivery e faturamento. Leva menos de 1 minuto.</p></li>
-      <li class="step"><span class="n">2</span><h3>Eu olho o seu delivery</h3><p>Vejo o seu Instagram e o seu cardápio antes de falar com você. Nada de pergunta que eu já poderia ter respondido sozinha.</p></li>
-      <li class="step"><span class="n">3</span><h3>Te chamo no WhatsApp</h3><p>Se fizer sentido, mando uma análise em vídeo do seu delivery e a proposta feita para o seu caso. Nada de pacote pronto.</p></li>
-      <li class="step"><span class="n">4</span><h3>Implementação e evolução</h3><p>O combinado entra no ar em até 10 dias. Depois, a evolução segue em cima dos seus números.</p></li>
+      <li class="step"><span class="n">1</span><h3>Você preenche o formulário</h3><p>Leva cerca de 1 minuto: nome, WhatsApp, Instagram do delivery e faturamento.</p></li>
+      <li class="step"><span class="n">2</span><h3>Eu olho o seu delivery antes</h3><p>Vejo seu Instagram e seu cardápio e chamo você no WhatsApp para marcar a conversa.</p></li>
+      <li class="step"><span class="n">3</span><h3>Reunião</h3><p>Eu mostro, com base nos números que você informou, o que dá para mudar no seu delivery. Se fizer sentido, a gente segue.</p></li>
+      <li class="step"><span class="n">4</span><h3>Onboarding</h3><p>Você entra no grupo de WhatsApp, libera os acessos pelas plataformas (nunca por senha) e me manda o que eu pedir.</p></li>
+      <li class="step"><span class="n">5</span><h3>No ar em até 10 dias</h3><p>Contados a partir do momento em que você me envia o que eu pedir. Depois disso, resumo toda semana e encontros de estratégia, com os números do seu delivery.</p></li>
     </ol>
-    <p class="note-box">A análise é só o ponto de partida. <strong>Você não precisa sair do iFood</strong>, e já sai sabendo o que dá pra fazer no seu delivery.</p>
+    <p class="note-box"><strong>Você não precisa sair do iFood.</strong></p>
     <div class="cta-row"><a class="btn btn-cta" href="https://www.estudiohoff.com.br/formulario/?utm_source=site&amp;utm_medium=passos" data-form data-pos="passos">Quero a análise do meu delivery <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
   </div>
 </section>
@@ -1142,7 +1188,7 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
         <a class="btn btn-cta btn-block" id="q-playbook" href="#" target="_blank" rel="noopener">Abrir o playbook grátis <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <p class="form-micro">Quando quiser dar o próximo passo, é só chamar a gente no WhatsApp.</p>
         <div class="q-diag"><h4>O que a gente enxerga no seu caso</h4><p id="q-diag-text"></p></div>
-        <a class="btn btn-ghost btn-block" id="lead-send" href="#" data-wa data-pos="formulario" target="_blank" rel="noopener">Continuar no WhatsApp <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost btn-block" id="lead-send" href="https://wa.me/5519988485348?text=Oi!%20Vim%20pelo%20site%20do%20hoff.food.%20Tenho%20um%20delivery%20e%20quero%20entender%20como%20funciona." data-wa data-pos="formulario" target="_blank" rel="noopener">Continuar no WhatsApp <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </div>
@@ -1155,28 +1201,32 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
     <div class="faq">
       <div class="faq-col">
         <details name="faq"><summary>Serve pro meu tipo de negócio?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Serve para donos de delivery que vendem pelo iFood. A Gabriela já entregou mais de 150 projetos com o Estúdio Hoff, de hamburgueria a pizzaria. O método rende mais pra quem já vende bem no iFood; quem ainda não tem canal próprio começa pelo cardápio próprio.</p></details>
-        <details name="faq"><summary>Como funciona a contratação?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Primeiro você preenche o formulário e eu olho o seu delivery. Se fizer sentido, a gente conversa no WhatsApp e eu monto a proposta para o seu caso. O formato é definido nessa conversa.</p></details>
-        <details name="faq"><summary>Quanto custa?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Depende do seu momento e do que o seu delivery precisa agora. Por isso o primeiro passo é a análise. Depois da conversa, você recebe a proposta com os valores.</p></details>
+        <details name="faq"><summary>Como funciona a contratação?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Você preenche o formulário e eu olho o seu delivery. Depois chamo você no WhatsApp para marcar a conversa. Se fizer sentido, a gente segue para o onboarding. É um acompanhamento mensal, com prazo mínimo de 6 meses.</p></details>
+        <details name="faq"><summary>Quanto custa?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">O valor e as condições eu apresento na reunião, com base nos seus números. É um acompanhamento mensal, com prazo mínimo de 6 meses.</p></details>
+        <details name="faq"><summary>Tem fidelidade?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">O prazo mínimo é de 6 meses. Do dia 90 ao dia 100 a gente abre os números juntos. Se você fez a sua parte e a mídia não se pagou, pode encerrar sem multa. Se a mídia se pagou, a saída tem custo de 30% do que falta para completar o mínimo. Em qualquer caso você mantém os bônus. Tudo isso fica escrito no contrato.</p></details>
       </div>
       <div class="faq-col">
-        <details name="faq"><summary>Em quanto tempo vejo resultado?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">O método entra no ar em até 10 dias, e é aí que cardápio, campanha e recompra começam a rodar. O resultado depende do cardápio, da operação e da região, por isso o hoff.food não promete número nem prazo. Os resultados desta página são de casos específicos, não uma média.</p></details>
-        <details name="faq"><summary>Preciso sair do iFood?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Não. O iFood continua rodando e o canal próprio cresce ao lado dele. A ideia é deixar de depender só do app.</p></details>
-        <details name="faq"><summary>Já tentei agência e não funcionou. Qual a diferença?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Quase sempre a tentativa anterior ataca um pedaço só: só post, só anúncio ou só desconto. Aqui, cardápio próprio, campanha e recompra são montados juntos, pro cliente chegar, comprar direto e voltar. E o hoff.food acompanha pedido e recompra, não curtida.</p></details>
+        <details name="faq"><summary>Em quanto tempo vejo resultado?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">O canal fica no ar em até 10 dias, contados a partir do momento em que você me envia o que eu pedir. Não prometo número, porque o resultado depende do cardápio, da operação e da região.</p></details>
+        <details name="faq"><summary>Preciso sair do iFood?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Não. O iFood continua rodando. A ideia é parar de depender só dele.</p></details>
+        <details name="faq"><summary>Quem paga a verba de anúncio?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Você, direto à plataforma de anúncios, na sua conta, cerca de R$ 30 por dia. Eu não recebo nem administro esse dinheiro.</p></details>
+        <details name="faq"><summary>O Cardápio Web fica comigo?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Você recebe 3 meses de bônus. Do dia 90 em diante a assinatura passa para a sua conta, e você segue com ela.</p></details>
       </div>
     </div>
     <details class="faq-more" id="todas-duvidas">
       <summary><span>Ver todas as dúvidas</span><svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary>
       <div class="faq">
         <div class="faq-col">
+        <details name="faq"><summary>Já tentei agência e não funcionou. Qual a diferença?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Quase sempre a tentativa anterior ataca um pedaço só: só post, só anúncio ou só desconto. Aqui, cardápio próprio, campanha e recompra são montados juntos, pro cliente chegar, comprar direto e voltar. E o hoff.food acompanha pedido e recompra, não curtida.</p></details>
         <details name="faq"><summary>Meus clientes preferem pedir pelo app. Isso atrapalha?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Muitos vão continuar pedindo pelo app, e ele segue ativo. O cardápio próprio abre um segundo caminho, que precisa ser tão simples quanto o app.</p></details>
         <details name="faq"><summary>Minha margem já é apertada. Vale a pena?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">O ponto de partida é a comissão por pedido: pedido que entra pelo canal próprio não paga essa comissão. Quanto sobra no seu caso depende do cardápio, da operação e da região, e por isso o hoff.food não promete número.</p></details>
         <details name="faq"><summary>Minha equipe vai dar conta de mais pedidos?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">É o primeiro ponto avaliado na conversa. O canal próprio só faz sentido se a operação sustentar pedido direto sem aumentar erro nem atraso. Se hoje não sustenta, você fica sabendo antes de investir.</p></details>
-        <details name="faq"><summary>Não tenho lista de clientes. Consigo começar?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Consegue. O cardápio próprio guarda o contato de cada cliente que pede direto, e essa lista alimenta a recompra semanal. Quanto antes o canal entra no ar, antes ela começa a existir.</p></details>
         </div>
         <div class="faq-col">
+        <details name="faq"><summary>Quanto tempo eu preciso dedicar?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Cerca de 15 minutos por dia para acompanhar e usar o que foi entregue.</p></details>
+        <details name="faq"><summary>Vocês produzem as fotos do meu cardápio?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">As imagens vêm do seu negócio. Eu monto a estratégia e a campanha em cima do material que você fornece. Na região de Hortolândia, Campinas, Sumaré, Valinhos, Vinhedo e Paulínia, a captação de vídeos presencial vem como bônus.</p></details>
+        <details name="faq"><summary>Quem cuida do meu projeto e com que frequência?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">A Gabriela Pantarotto cuida de cada projeto. Você recebe um resumo toda semana no grupo de WhatsApp. Os encontros de estratégia são dois no primeiro mês e um por mês depois.</p></details>
+        <details name="faq"><summary>Não tenho lista de clientes. Consigo começar?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">Consegue. O cardápio próprio guarda o contato de cada cliente que pede direto, e essa lista alimenta a recompra semanal. Quanto antes o canal entra no ar, antes ela começa a existir.</p></details>
         <details name="faq"><summary>Não tenho tempo de aprender ferramenta nova. Como fica?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">O hoff.food cuida da parte técnica, do cardápio à campanha. Você acompanha os números e decide o rumo.</p></details>
-        <details name="faq"><summary>O hoff.food produz as fotos e posta no meu Instagram?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">O conteúdo do perfil fica com você: ninguém conhece a sua cozinha como você. O hoff.food cuida da estratégia e da campanha e monta tudo em cima das imagens que você fornece. Se fizer sentido, você recebe também um guia de postagem do mês, leve e simples.</p></details>
-        <details name="faq"><summary>Quem acompanha o meu projeto?<svg class="ic" aria-hidden="true"><use href="#i-down"/></svg></summary><p class="ans">A Gabriela Pantarotto acompanha cada projeto de perto, com encontros quinzenais no primeiro mês e mensais depois.</p></details>
         </div>
       </div>
     </details>
@@ -1190,9 +1240,9 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
   <div class="wrap">
     <img class="seal" src="data:image/png;base64,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" width="68" height="68" alt="hoff.food">
     <h2>Seu cliente já pede toda semana. Falta ele pedir direto com você.</h2>
-    <p class="lead">Preencha o formulário e eu olho o seu Instagram e o seu cardápio. Se fizer sentido, a proposta é feita para o seu caso.</p>
+    <p class="lead">Preencha o formulário e eu olho o seu Instagram e o seu cardápio antes de falar com você.</p>
     <a class="btn btn-cta" href="https://www.estudiohoff.com.br/formulario/?utm_source=site&amp;utm_medium=fechamento" data-form data-pos="fechamento">Quero a análise do meu delivery <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <p class="micro">Leva 1 minuto. Eu olho o seu delivery e te chamo no WhatsApp.</p>
+    <p class="micro">Leva cerca de 1 minuto. Depois eu chamo você no WhatsApp para marcar uma conversa.</p>
   </div>
 </section>
 </main>
@@ -1293,7 +1343,7 @@ fieldset.field{border:0;padding:0;margin:0;min-width:0}
   /* Entrada suave dos blocos ao rolar */
   var mobile = window.matchMedia && matchMedia('(max-width:720px)').matches;
   if('IntersectionObserver' in window){
-    var targets = document.querySelectorAll('.head,.pain,.turn>*,.change,.plan,.step,.result,.start,.deliver,.feature,.escala,.sub-title,.timeline li,.portrait,.who-copy>*,.form,.fine,.changes-close,.faq details,.closing .wrap>*,.rail');
+    var targets = document.querySelectorAll('.head,.pain,.turn>*,.change,.plan,.step,.result,.start,.deliver,.feature,.escala,.sub-title,.timeline li,.portrait,.who-copy>*,.form,.fine,.changes-close,.faq details,.bonus,.closing .wrap>*,.rail');
     var rv = new IntersectionObserver(function(en){
       en.forEach(function(x){ if(x.isIntersecting || x.boundingClientRect.top < 0){ x.target.classList.add('in'); rv.unobserve(x.target); } });
     }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
